@@ -24,8 +24,8 @@ const MenuItem = styled.div`
     color: #333;
 
     &:hover {
-        color: #000;
-        font-weight: bold;
+        color: blue;
+        font-weight: lighter;
     }
 `;
 

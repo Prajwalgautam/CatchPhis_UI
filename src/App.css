@@ -6,7 +6,7 @@ body {
   background-color: #f0f0f0;
 }
 
-.home, .about, .pricing, .chat {
+.home, .about, .pricing, .chat, .login {
   padding: 2rem;
   text-align: center;
 }

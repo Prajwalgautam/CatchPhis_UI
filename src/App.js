@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import About from './components/About';
+import Login from './components/Login';
 import Pricing from './components/Pricing';
 import Chat from './components/Chat';
 import Success from './components/Success';
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/chat" element={<Chat />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/success" component={Success} />
                 <Route path="/cancel" component={Cancel} />
             </Routes>

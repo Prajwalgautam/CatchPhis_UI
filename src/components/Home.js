@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import SiteData from './SiteData';
 import Analytics from './Analytics';
@@ -10,18 +10,30 @@ const HomeContainer = styled.div`
     padding: 2rem;
 `;
 
+const HamburgerMenu = styled.div`
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    user-select: none;
+`;
+
 const SideMenu = styled.div`
-    display: inline-block; /* Ensure side menu only takes necessary width */
     background-color: #f5f5f5;
-    padding: 15px;
+    padding: ${props => (props.isOpen ? '15px' : '0')};
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-height: ${props => (props.isOpen ? '500px' : '0')};
+    transition: max-height 0.3s ease, padding 0.3s ease;
 `;
 
 const MenuItem = styled.div`
     margin-bottom: 10px;
     cursor: pointer;
     color: #333;
+    padding: 10px 0;
 
     &:hover {
         color: blue;
@@ -58,6 +70,7 @@ const Section = styled.section`
 `;
 
 const Home = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const coreFeaturesRef = useRef(null);
     const siteDataRef = useRef(null);
     const overallAnalyticsRef = useRef(null);
@@ -69,16 +82,25 @@ const Home = () => {
         ref.current.scrollIntoView({ behavior: 'smooth' });
     };
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <HomeContainer>
-            <SideMenu>
-                <MenuItem onClick={() => scrollToSection(coreFeaturesRef)}>Core Features</MenuItem>
-                <MenuItem onClick={() => scrollToSection(siteDataRef)}>Site Data Detected</MenuItem>
-                <MenuItem onClick={() => scrollToSection(overallAnalyticsRef)}>Overall Analytics</MenuItem>
-                <MenuItem onClick={() => scrollToSection(additionalFeature1Ref)}>Additional Feature 1</MenuItem>
-                <MenuItem onClick={() => scrollToSection(additionalFeature2Ref)}>Additional Feature 2</MenuItem>
-                <MenuItem onClick={() => scrollToSection(additionalFeature3Ref)}>Additional Feature 3</MenuItem>
-            </SideMenu>
+            <div>
+                <HamburgerMenu onClick={toggleMenu}>
+                    &#9776;
+                </HamburgerMenu>
+                <SideMenu isOpen={isMenuOpen}>
+                    <MenuItem onClick={() => scrollToSection(coreFeaturesRef)}>Core Features</MenuItem>
+                    <MenuItem onClick={() => scrollToSection(siteDataRef)}>Site Data Detected</MenuItem>
+                    <MenuItem onClick={() => scrollToSection(overallAnalyticsRef)}>Overall Analytics</MenuItem>
+                    <MenuItem onClick={() => scrollToSection(additionalFeature1Ref)}>Additional Feature 1</MenuItem>
+                    <MenuItem onClick={() => scrollToSection(additionalFeature2Ref)}>Additional Feature 2</MenuItem>
+                    <MenuItem onClick={() => scrollToSection(additionalFeature3Ref)}>Additional Feature 3</MenuItem>
+                </SideMenu>
+            </div>
             <SectionColumn>
                 <Section ref={coreFeaturesRef}>
                     <h2>Core Features</h2>

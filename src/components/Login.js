@@ -8,7 +8,7 @@ const LoginContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 400px;
+    height: 600px;
     // background: linear-gradient(135deg, #71b7e6, #9b59b6);
     padding: 2rem;
 `;

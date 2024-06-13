@@ -6,8 +6,8 @@ import Analytics from './Analytics';
 const HomeContainer = styled.div`
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 20px;
-    padding: 2rem;
+    gap: 10px;
+    padding: 1rem;
 `;
 
 const HamburgerMenu = styled.div`

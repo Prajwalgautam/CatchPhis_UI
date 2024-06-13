@@ -25,3 +25,14 @@
 .nav-links a:hover {
     text-decoration: underline;
 }
+
+/* NavBar.css */
+
+.navbar-title {
+    text-decoration: none; /* Prevents underline on the link */
+    color: inherit; /* Ensures the link takes on the color of the surrounding text */
+}
+
+.navbar h1 {
+    margin: 0; /* Ensures no margin issues with the h1 inside the link */
+}

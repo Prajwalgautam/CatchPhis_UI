@@ -19,7 +19,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/chat" element={<Chat />} />
-                <Route path="/login" element={<Login />} />
+                <Route path="/login" element={<Login />} />{/* route to profile after login*/}
                 <Route path="/success" component={Success} />
                 <Route path="/cancel" component={Cancel} />
             </Routes>

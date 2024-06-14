@@ -12,7 +12,6 @@ const LoginContainer = styled.div`
     // background: linear-gradient(135deg, #71b7e6, #9b59b6);
     padding: 2rem;
 `;
-
 const LoginForm = styled.form`
     display: flex;
     flex-direction: column;

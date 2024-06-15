@@ -2,12 +2,10 @@ import React from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import './Pricing.css';
 
-
-const publishKey="pk_test_51POtZ02NvOaTgpk_test_51POtZ02NvOaTgEjIlqDnusZYN0J7Sj6mZReqDaEYB1dpb0pADOSTXaI2wkCYRV3qIm12vfTsxwCFTWi0YWrk9RXv00n2O5f7wmEjIlqDnusZYN0J7Sj6mZReqDaEYB1dpb0pADOSTXaI2wkCYRV3qIm12vfTsxwCFTWi0YWrk9RXv00n2O5f7wm"
+const publishKey = "pk_test_51POtZ02NvOaTgEjIlqDnusZYN0J7Sj6mZReqDaEYB1dpb0pADOSTXaI2wkCYRV3qIm12vfTsxwCFTWi0YWrk9RXv00n2O5f7wm";
 const stripePromise = loadStripe(publishKey);
 
 const Pricing = () => {
-
     const handleClick = async (priceId) => {
         console.log('Button clicked for price ID:', priceId);
         const stripe = await stripePromise;

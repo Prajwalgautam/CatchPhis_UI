@@ -5,7 +5,7 @@ import Analytics from './Analytics';
 
 const HomeContainer = styled.div`
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto .75fr auto auto;
     gap: 10px;
     padding: 1rem;
 `;
@@ -17,6 +17,11 @@ const HamburgerMenu = styled.div`
     font-size: 2rem;
     margin-bottom: 20px;
     user-select: none;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
 `;
 
 const SideMenu = styled.div`
@@ -25,7 +30,7 @@ const SideMenu = styled.div`
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    max-height: ${props => (props.isOpen ? '500px' : '0')};
+    max-height: ${props => (props.isOpen ? 'auto' : '0')};
     transition: max-height 0.3s ease, padding 0.3s ease;
 `;
 
@@ -34,10 +39,20 @@ const MenuItem = styled.div`
     cursor: pointer;
     color: #333;
     padding: 10px 0;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+    animation-delay: ${props => props.delay}s;
+    transition: color 0.3s ease, font-weight 0.3s ease;
 
     &:hover {
         color: blue;
         font-weight: lighter;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
     }
 `;
 
@@ -82,23 +97,27 @@ const Home = () => {
         ref.current.scrollIntoView({ behavior: 'smooth' });
     };
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
+    const handleMouseEnter = () => {
+        setIsMenuOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsMenuOpen(false);
     };
 
     return (
         <HomeContainer>
-            <div>
-                <HamburgerMenu onClick={toggleMenu}>
+            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                <HamburgerMenu>
                     &#9776;
                 </HamburgerMenu>
                 <SideMenu isOpen={isMenuOpen}>
-                    <MenuItem onClick={() => scrollToSection(coreFeaturesRef)}>Core Features</MenuItem>
-                    <MenuItem onClick={() => scrollToSection(siteDataRef)}>Site Data Detected</MenuItem>
-                    <MenuItem onClick={() => scrollToSection(overallAnalyticsRef)}>Overall Analytics</MenuItem>
-                    <MenuItem onClick={() => scrollToSection(additionalFeature1Ref)}>Additional Feature 1</MenuItem>
-                    <MenuItem onClick={() => scrollToSection(additionalFeature2Ref)}>Additional Feature 2</MenuItem>
-                    <MenuItem onClick={() => scrollToSection(additionalFeature3Ref)}>Additional Feature 3</MenuItem>
+                    <MenuItem delay={0.1} onClick={() => scrollToSection(coreFeaturesRef)}>Core Features</MenuItem>
+                    <MenuItem delay={0.2} onClick={() => scrollToSection(siteDataRef)}>Site Data Detected</MenuItem>
+                    <MenuItem delay={0.3} onClick={() => scrollToSection(overallAnalyticsRef)}>Overall Analytics</MenuItem>
+                    <MenuItem delay={0.4} onClick={() => scrollToSection(additionalFeature1Ref)}>Additional Feature 1</MenuItem>
+                    <MenuItem delay={0.5} onClick={() => scrollToSection(additionalFeature2Ref)}>Additional Feature 2</MenuItem>
+                    <MenuItem delay={0.6} onClick={() => scrollToSection(additionalFeature3Ref)}>Additional Feature 3</MenuItem>
                 </SideMenu>
             </div>
             <SectionColumn>

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
     // Dummy data for testing
@@ -17,7 +17,7 @@ const Login = () => {
     // Simulate login process
     if (email === dummyUser.email && password === dummyUser.password) {
       // On successful login, redirect to home
-      history.push('/');
+      navigate('/');
     } else {
       alert('Invalid credentials');
     }
@@ -33,7 +33,7 @@ const Login = () => {
     // .then(response => response.json())
     // .then(data => {
     //   if (data.success) {
-    //     history.push('/');
+    //     navigate('/');
     //   } else {
     //     alert('Invalid credentials');
     //   }

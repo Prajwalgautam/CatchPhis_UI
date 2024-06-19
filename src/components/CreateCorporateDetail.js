@@ -1,39 +1,39 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
-import './CreateCorporateDetail.css';
+import { useNavigate } from 'react-router-dom';
+import './CreateSubscription.css';
 
-const CreateCorporateDetail = () => {
-  const history = useHistory();
+const CreateSubscription = () => {
+  const navigate = useNavigate();
 
-  const handleCreateDetail = () => {
-    // Dummy logic for creating corporate detail
-    alert('Corporate detail created successfully');
-    history.push('/create-subscription');
+  const handleCreateSubscription = () => {
+    // Dummy logic for creating subscription
+    alert('Subscription created successfully');
+    navigate('/');
 
     // Future API integration
-    // fetch('/api/create-corporate-detail', {
+    // fetch('/api/create-subscription', {
     //   method: 'POST',
     //   headers: {
     //     'Content-Type': 'application/json',
     //   },
-    //   body: JSON.stringify({ corporateDetails }),
+    //   body: JSON.stringify({ subscriptionDetails }),
     // })
     // .then(response => response.json())
     // .then(data => {
     //   if (data.success) {
-    //     history.push('/create-subscription');
+    //     navigate('/');
     //   } else {
-    //     alert('Failed to create corporate details');
+    //     alert('Failed to create subscription');
     //   }
     // });
   };
 
   return (
-    <div className="create-corporate-detail-container">
-      <h2>Create Corporate Detail</h2>
-      <button onClick={handleCreateDetail}>Create Detail</button>
+    <div className="create-subscription-container">
+      <h2>Create Subscription</h2>
+      <button onClick={handleCreateSubscription}>Create Subscription</button>
     </div>
   );
 };
 
-export default CreateCorporateDetail;
+export default CreateSubscription;

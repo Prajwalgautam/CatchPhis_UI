@@ -1,18 +1,23 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Activate.css';
 
 const Activate = () => {
-  const history = useHistory();
+  const [accountType, setAccountType] = useState('personal'); // Default to 'personal' for testing
+  const [corporateDetailCreated, setCorporateDetailCreated] = useState(false); // Default to false for testing
+  const [corporateSubscribed, setCorporateSubscribed] = useState(false); // Default to false for testing
+  const navigate = useNavigate();
 
   const handleActivation = () => {
     // Dummy activation logic for testing
-    const accountType = 'personal'; // Example condition
-
     if (accountType === 'personal') {
-      history.push('/');
+      navigate('/');
+    } else if (!corporateDetailCreated) {
+      navigate('/create-corporate-detail');
+    } else if (!corporateSubscribed) {
+      navigate('/create-subscription');
     } else {
-      history.push('/create-corporate-detail');
+      navigate('/');
     }
 
     // Future API integration
@@ -27,9 +32,13 @@ const Activate = () => {
     // .then(data => {
     //   if (data.success) {
     //     if (data.accountType === 'personal') {
-    //       history.push('/');
+    //       navigate('/');
+    //     } else if (!data.corporateDetailCreated) {
+    //       navigate('/create-corporate-detail');
+    //     } else if (!data.corporateSubscribed) {
+    //       navigate('/create-subscription');
     //     } else {
-    //       history.push('/create-corporate-detail');
+    //       navigate('/');
     //     }
     //   } else {
     //     alert('Activation failed');
@@ -41,6 +50,38 @@ const Activate = () => {
     <div className="activate-container">
       <h2>Activate Account</h2>
       <button onClick={handleActivation}>Activate</button>
+      <div className="test-controls">
+        <h3>Test Controls</h3>
+        <div>
+          <label>
+            Account Type:
+            <select value={accountType} onChange={(e) => setAccountType(e.target.value)}>
+              <option value="personal">Personal</option>
+              <option value="corporate">Corporate</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>
+            Corporate Detail Created:
+            <input
+              type="checkbox"
+              checked={corporateDetailCreated}
+              onChange={(e) => setCorporateDetailCreated(e.target.checked)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Corporate Subscribed:
+            <input
+              type="checkbox"
+              checked={corporateSubscribed}
+              onChange={(e) => setCorporateSubscribed(e.target.checked)}
+            />
+          </label>
+        </div>
+      </div>
     </div>
   );
 };

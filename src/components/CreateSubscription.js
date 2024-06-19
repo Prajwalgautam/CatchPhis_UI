@@ -1,14 +1,14 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './CreateSubscription.css';
 
 const CreateSubscription = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleCreateSubscription = () => {
     // Dummy logic for creating subscription
     alert('Subscription created successfully');
-    history.push('/');
+    navigate('/');
 
     // Future API integration
     // fetch('/api/create-subscription', {
@@ -21,7 +21,7 @@ const CreateSubscription = () => {
     // .then(response => response.json())
     // .then(data => {
     //   if (data.success) {
-    //     history.push('/');
+    //     navigate('/');
     //   } else {
     //     alert('Failed to create subscription');
     //   }

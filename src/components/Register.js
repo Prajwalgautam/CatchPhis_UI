@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Register.css';
 
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleRegister = () => {
     // Dummy register logic for testing
     alert('User registered successfully');
-    history.push('/login');
+    navigate('/login');
 
     // Future API integration
     // fetch('/api/register', {
@@ -23,7 +23,7 @@ const Register = () => {
     // .then(response => response.json())
     // .then(data => {
     //   if (data.success) {
-    //     history.push('/login');
+    //     navigate('/login');
     //     alert('User registered successfully');
     //   } else {
     //     alert('Registration failed');

@@ -14,7 +14,7 @@ const Login = () => {
         // Use login function from AuthContext
         login(username, password);
         if (username === 'testuser' && password === 'testpassword') {
-            navigate('/profile');
+            navigate('/');
         }
     };
 

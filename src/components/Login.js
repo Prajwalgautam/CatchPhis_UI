@@ -1,63 +1,47 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import './Login.css';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Dummy data for testing
-    const dummyUser = {
-      email: 'user@example.com',
-      password: 'password',
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Use login function from AuthContext
+        login(username, password);
+        if (username === 'testuser' && password === 'testpassword') {
+            navigate('/profile');
+        }
     };
 
-    // Simulate login process
-    if (email === dummyUser.email && password === dummyUser.password) {
-      // On successful login, redirect to home
-      navigate('/');
-    } else {
-      alert('Invalid credentials');
-    }
-
-    // Future API integration
-    // fetch('/api/login', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ email, password }),
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   if (data.success) {
-    //     navigate('/');
-    //   } else {
-    //     alert('Invalid credentials');
-    //   }
-    // });
-  };
-
-  return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
-    </div>
-  );
+    return (
+        <div className="login-container">
+            <h2>Login</h2>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    Username:
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Password:
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </label>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    );
 };
 
 export default Login;

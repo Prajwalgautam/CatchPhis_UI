@@ -13,27 +13,29 @@ import CreateCorporateDetail from './components/CreateCorporateDetail';
 import CreateSubscription from './components/CreateSubscription';
 import './App.css';
 import Success from './components/Success';
-
+import { AuthProvider, useAuth } from './components/AuthContext';
 
 function App() {
     return (
-        <Router>
-            <NavBar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/pricing" element={<Pricing />} />
-                <Route path="/chat" element={<Chat />} />
-                <Route path="/login" element={<Login />} />{/* route to home after login */}
-                <Route path="/register" element={<Register />} />
-                <Route path="/activate" element={<Activate />} />
-                <Route path="/create-corporate-detail" element={<CreateCorporateDetail />} />
-                <Route path="/create-subscription" element={<CreateSubscription />} />
-                <Route path="/cancel" element={<Cancel />} />
-                <Route path="/success" component={Success} />
-                {/* <Route path="/cancel" component={Cancel} /> */}
-            </Routes>
-        </Router>
+        <AuthProvider>
+            <Router>
+                <NavBar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/pricing" element={<Pricing />} />
+                    <Route path="/chat" element={<Chat />} />
+                    <Route path="/login" element={<Login />} />{/* route to home after login */}
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/activate" element={<Activate />} />
+                    <Route path="/create-corporate-detail" element={<CreateCorporateDetail />} />
+                    <Route path="/create-subscription" element={<CreateSubscription />} />
+                    <Route path="/cancel" element={<Cancel />} />
+                    <Route path="/success" component={Success} />
+                    {/* <Route path="/cancel" component={Cancel} /> */}
+                </Routes>
+            </Router>
+        </AuthProvider>
     );
 }
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import './Activate.css';
 
 const Activate = () => {
@@ -7,17 +8,20 @@ const Activate = () => {
   const [corporateDetailCreated, setCorporateDetailCreated] = useState(false); // Default to false for testing
   const [corporateSubscribed, setCorporateSubscribed] = useState(false); // Default to false for testing
   const navigate = useNavigate();
+  const { activatePremium } = useAuth();
 
   const handleActivation = () => {
     // Dummy activation logic for testing
     if (accountType === 'personal') {
-      navigate('/');
+      activatePremium(); // Set premium status
+      navigate('/profile');
     } else if (!corporateDetailCreated) {
       navigate('/create-corporate-detail');
     } else if (!corporateSubscribed) {
       navigate('/create-subscription');
     } else {
-      navigate('/');
+      activatePremium(); // Set premium status
+      navigate('/profile');
     }
 
     // Future API integration
@@ -32,13 +36,15 @@ const Activate = () => {
     // .then(data => {
     //   if (data.success) {
     //     if (data.accountType === 'personal') {
-    //       navigate('/');
+    //       activatePremium();
+    //       navigate('/profile');
     //     } else if (!data.corporateDetailCreated) {
     //       navigate('/create-corporate-detail');
     //     } else if (!data.corporateSubscribed) {
     //       navigate('/create-subscription');
     //     } else {
-    //       navigate('/');
+    //       activatePremium();
+    //       navigate('/profile');
     //     }
     //   } else {
     //     alert('Activation failed');

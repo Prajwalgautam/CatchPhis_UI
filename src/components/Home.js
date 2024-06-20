@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import SiteData from './SiteData';
 import Analytics from './Analytics';
@@ -84,14 +84,42 @@ const Section = styled.section`
     }
 `;
 
+const Footer = styled.footer`
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f5f5f5;
+    color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+
+    @media (max-width: 600px) {
+        font-size: 12px;
+        padding: 5px 0;
+    }
+`;
+
 const Home = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showFooter, setShowFooter] = useState(false);
     const coreFeaturesRef = useRef(null);
     const siteDataRef = useRef(null);
     const overallAnalyticsRef = useRef(null);
     const additionalFeature1Ref = useRef(null);
     const additionalFeature2Ref = useRef(null);
     const additionalFeature3Ref = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const bottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+            setShowFooter(bottom);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const scrollToSection = (ref) => {
         ref.current.scrollIntoView({ behavior: 'smooth' });
@@ -106,48 +134,55 @@ const Home = () => {
     };
 
     return (
-        <HomeContainer>
-            <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-                <HamburgerMenu>
-                    &#9776;
-                </HamburgerMenu>
-                <SideMenu isOpen={isMenuOpen}>
-                    <MenuItem delay={0.1} onClick={() => scrollToSection(coreFeaturesRef)}>Core Features</MenuItem>
-                    <MenuItem delay={0.2} onClick={() => scrollToSection(siteDataRef)}>Site Data Detected</MenuItem>
-                    <MenuItem delay={0.3} onClick={() => scrollToSection(overallAnalyticsRef)}>Overall Analytics</MenuItem>
-                    <MenuItem delay={0.4} onClick={() => scrollToSection(additionalFeature1Ref)}>Additional Feature 1</MenuItem>
-                    <MenuItem delay={0.5} onClick={() => scrollToSection(additionalFeature2Ref)}>Additional Feature 2</MenuItem>
-                    <MenuItem delay={0.6} onClick={() => scrollToSection(additionalFeature3Ref)}>Additional Feature 3</MenuItem>
-                </SideMenu>
-            </div>
-            <SectionColumn>
-                <Section ref={coreFeaturesRef}>
-                    <h2>Core Features</h2>
-                    <p>CatchPhis offers advanced phishing detection and site analytics.</p>
-                </Section>
-                <Section ref={siteDataRef}>
-                    <h2>Site Data Detected</h2>
-                    <SiteData />
-                </Section>
-                <Section ref={overallAnalyticsRef}>
-                    <h2>Overall Analytics</h2>
-                    <Analytics />
-                </Section>
-                <Section ref={additionalFeature1Ref}>
-                    <h2>Additional Feature 1</h2>
-                    <p>Description of Additional Feature 1.</p>
-                </Section>
-                <Section ref={additionalFeature2Ref}>
-                    <h2>Additional Feature 2</h2>
-                    <p>Description of Additional Feature 2.</p>
-                </Section>
-                <Section ref={additionalFeature3Ref}>
-                    <h2>Additional Feature 3</h2>
-                    <p>Description of Additional Feature 3.</p>
-                </Section>
-            </SectionColumn>
-        </HomeContainer>
+        <div>
+            <HomeContainer>
+                <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+                    <HamburgerMenu>
+                        &#9776;
+                    </HamburgerMenu>
+                    <SideMenu isOpen={isMenuOpen}>
+                        <MenuItem delay={0.1} onClick={() => scrollToSection(coreFeaturesRef)}>Core Features</MenuItem>
+                        <MenuItem delay={0.2} onClick={() => scrollToSection(siteDataRef)}>Site Data Detected</MenuItem>
+                        <MenuItem delay={0.3} onClick={() => scrollToSection(overallAnalyticsRef)}>Overall Analytics</MenuItem>
+                        <MenuItem delay={0.4} onClick={() => scrollToSection(additionalFeature1Ref)}>Additional Feature 1</MenuItem>
+                        <MenuItem delay={0.5} onClick={() => scrollToSection(additionalFeature2Ref)}>Additional Feature 2</MenuItem>
+                        <MenuItem delay={0.6} onClick={() => scrollToSection(additionalFeature3Ref)}>Additional Feature 3</MenuItem>
+                    </SideMenu>
+                </div>
+                <SectionColumn>
+                    <Section ref={coreFeaturesRef}>
+                        <h2>Core Features</h2>
+                        <p>CatchPhis offers advanced phishing detection and site analytics.</p>
+                    </Section>
+                    <Section ref={siteDataRef}>
+                        <h2>Site Data Detected</h2>
+                        <SiteData />
+                    </Section>
+                    <Section ref={overallAnalyticsRef}>
+                        <h2>Overall Analytics</h2>
+                        <Analytics />
+                    </Section>
+                    <Section ref={additionalFeature1Ref}>
+                        <h2>Additional Feature 1</h2>
+                        <p>Description of Additional Feature 1.</p>
+                    </Section>
+                    <Section ref={additionalFeature2Ref}>
+                        <h2>Additional Feature 2</h2>
+                        <p>Description of Additional Feature 2.</p>
+                    </Section>
+                    <Section ref={additionalFeature3Ref}>
+                        <h2>Additional Feature 3</h2>
+                        <p>Description of Additional Feature 3.</p>
+                    </Section>
+                </SectionColumn>
+            </HomeContainer>
+            {showFooter && (
+                <Footer>
+                    &copy; {new Date().getFullYear()} CatchPhis. All rights reserved.
+                </Footer>
+            )}
+        </div>
     );
-}
+};
 
 export default Home;

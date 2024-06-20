@@ -23,33 +23,6 @@ const Activate = () => {
       activatePremium(); // Set premium status
       navigate('/profile');
     }
-
-    // Future API integration
-    // fetch('/api/activate', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify({ accountType }),
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   if (data.success) {
-    //     if (data.accountType === 'personal') {
-    //       activatePremium();
-    //       navigate('/profile');
-    //     } else if (!data.corporateDetailCreated) {
-    //       navigate('/create-corporate-detail');
-    //     } else if (!data.corporateSubscribed) {
-    //       navigate('/create-subscription');
-    //     } else {
-    //       activatePremium();
-    //       navigate('/profile');
-    //     }
-    //   } else {
-    //     alert('Activation failed');
-    //   }
-    // });
   };
 
   return (

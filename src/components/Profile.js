@@ -1,15 +1,20 @@
 import React from 'react';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
-import './Profile.css';
+// import './Profile.css';
 
 const Profile = () => {
     const { isLoggedIn, currentUser, isPremiumUser } = useAuth();
     const navigate = useNavigate();
 
+    React.useEffect(() => {
+        if (!isLoggedIn) {
+            navigate('/login');
+        }
+    }, [isLoggedIn, navigate]);
+
     if (!isLoggedIn) {
-        navigate('/login');
-        return null;
+        return null; // Prevent rendering if not logged in
     }
 
     return (

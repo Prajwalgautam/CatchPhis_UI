@@ -36,12 +36,3 @@
 .navbar h1 {
     margin: 0; /* Ensures no margin issues with the h1 inside the link */
 }
-.btn {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #34579b;
-    padding: 1rem;
-    color: white;
-    
-  }

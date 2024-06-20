@@ -13,7 +13,7 @@ const Login = () => {
         e.preventDefault();
         // Use login function from AuthContext
         login(username, password);
-        if (username === 'testuser' && password === 'testpassword') {
+        if (username === 'user' && password === 'password') {
             navigate('/');
         }
     };

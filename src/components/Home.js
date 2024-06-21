@@ -151,7 +151,7 @@ const Home = () => {
                 </div>
                 <SectionColumn>
                     <Section ref={coreFeaturesRef}>
-                        <h2>Core Features</h2>
+                        <h2>Core Features</h2> {/*Add components to it using the ml models */}
                         <p>CatchPhis offers advanced phishing detection and site analytics.</p>
                     </Section>
                     <Section ref={siteDataRef}>
@@ -164,15 +164,15 @@ const Home = () => {
                     </Section>
                     <Section ref={additionalFeature1Ref}>
                         <h2>Additional Feature 1</h2>
-                        <p>Description of Additional Feature 1.</p>
+                        <p>Description of Additional Feature 1.</p>{/*Add components to it using the ml models */}
                     </Section>
                     <Section ref={additionalFeature2Ref}>
                         <h2>Additional Feature 2</h2>
-                        <p>Description of Additional Feature 2.</p>
+                        <p>Description of Additional Feature 2.</p>{/*Add components to it using the ml models */}
                     </Section>
                     <Section ref={additionalFeature3Ref}>
                         <h2>Additional Feature 3</h2>
-                        <p>Description of Additional Feature 3.</p>
+                        <p>Description of Additional Feature 3.</p>{/*Add components to it using the ml models */}
                     </Section>
                 </SectionColumn>
             </HomeContainer>

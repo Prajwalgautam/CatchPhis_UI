@@ -4,3 +4,6 @@ Single user will only be able to see their analytics of phising data where as co
 
 
 frontend integration with backend remaining
+
+
+Add notification system to notify the user

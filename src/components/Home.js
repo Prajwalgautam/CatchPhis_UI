@@ -150,6 +150,11 @@ const Home = () => {
                     </SideMenu>
                 </div>
                 <SectionColumn>
+                    
+                    <Section ref={overallAnalyticsRef}>
+                        <h2>Overall Analytics</h2>
+                        <Analytics />
+                    </Section>
                     <Section ref={coreFeaturesRef}>
                         <h2>Core Features</h2> {/*Add components to it using the ml models */}
                         <p>CatchPhis offers advanced phishing detection and site analytics.</p>
@@ -157,10 +162,6 @@ const Home = () => {
                     <Section ref={siteDataRef}>
                         <h2>Site Data Detected</h2>
                         <SiteData />
-                    </Section>
-                    <Section ref={overallAnalyticsRef}>
-                        <h2>Overall Analytics</h2>
-                        <Analytics />
                     </Section>
                     <Section ref={additionalFeature1Ref}>
                         <h2>Additional Feature 1</h2>

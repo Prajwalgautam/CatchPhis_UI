@@ -7,3 +7,5 @@ frontend integration with backend remaining
 
 
 Add notification system to notify the user
+
+Analytics behaviour changes needed to be done.

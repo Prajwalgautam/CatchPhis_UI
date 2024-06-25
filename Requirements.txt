@@ -9,3 +9,7 @@ frontend integration with backend remaining
 Add notification system to notify the user
 
 Analytics behaviour changes needed to be done.
+
+if user? ==> yes ==> login 
+else route register==> during registration ==> username organization name , email, and other required field needed to be filled 
+then proceed the user to register a persosnal or coreporate user as shown by the uml diagrams 

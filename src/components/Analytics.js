@@ -1,4 +1,3 @@
-// src/components/Analytics.js
 import React from 'react';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Bar, Pie } from 'react-chartjs-2';
@@ -34,6 +33,19 @@ const Analytics = () => {
             },
         ],
     };
+
+    // API endpoints for fetching data
+    // const fetchBarData = async () => {
+    //     const response = await fetch('/api/bar-data');
+    //     const data = await response.json();
+    //     // Process the data and update the state
+    // };
+
+    // const fetchPieData = async () => {
+    //     const response = await fetch('/api/pie-data');
+    //     const data = await response.json();
+    //     // Process the data and update the state
+    // };
 
     return (
         <div>

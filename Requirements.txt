@@ -23,6 +23,7 @@ some changes in architecture
   documentation preparation phase
    add necessary diagrams 
    add test case
+   some changes
    add api routes
    
    

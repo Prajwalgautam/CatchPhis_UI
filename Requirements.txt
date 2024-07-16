@@ -25,7 +25,7 @@ some changes in architecture
    add test case
    add api routes
    some changes
-   make some changes to the chat feature or remove
+   make some changes to the chat feature 
    
    
    

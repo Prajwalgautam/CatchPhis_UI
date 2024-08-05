@@ -24,7 +24,7 @@ some changes in architecture
    add necessary diagrams 
    add test case
    add api routes
-   some   cophan
+   some   cophan the map that leads to
    
    
    

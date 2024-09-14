@@ -21,7 +21,4 @@ some changes in architecture
 
 
   documentation preparation phase
-   add necessary diagrams 
- some changs 
-
- sjs shh dhdhdddsxssdfssdsd
+   add necess
